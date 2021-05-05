@@ -21,7 +21,13 @@ const App = () => {
 
   const addItem = (text) => {
     setItems(prevItems => {
-      return [{id: Math.floor(Math.random() * 100000), text}, ...prevItems]
+      let currentItemsText = prevItems.map(item => item.text);
+      let newItems;
+      if (!currentItemsText.includes(text)) {
+        return [{id: Math.floor(Math.random() * 100000), text}, ...prevItems]
+      } else {
+        return prevItems
+      }
     })
   }
 
